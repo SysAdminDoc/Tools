@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&GeoLocation=244&ProcessorArchitecture=amd64&ComputerNameMode=Custom&ComputerName=Maven&CompactOsMode=Default&TimeZoneMode=Explicit&TimeZone=UTC&PartitionMode=Unattended&PartitionLayout=GPT&EspSize=300&RecoveryMode=Partition&RecoverySize=1000&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=Xray&AccountDisplayName0=&AccountPassword0=admin&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&ClassicContextMenu=true&LaunchToThisPC=true&TaskbarSearch=Label&TaskbarIconsMode=Empty&DisableWidgets=true&LeftTaskbar=true&HideTaskViewButton=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableLongPaths=true&AllowPowerShellScripts=true&TurnOffSystemSounds=true&DisableAppSuggestions=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&VMwareTools=true&WifiMode=Unattended&WifiName=Maven_Imaging&WifiAuthentication=WPA3SAE&WifiPassword=8655Maven&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Disabled&ColorMode=Default&WallpaperMode=Script&WallpaperScript=%24url+%3D+%27https%3A%2F%2Fraw.githubusercontent.com%2FSysAdminDoc%2FTools%2Frefs%2Fheads%2Fmain%2FMaven_Wallpaper.jpg%27%3B%0D%0Areturn+%28+Invoke-WebRequest+-Uri+%24url+-UseBasicParsing+-TimeoutSec+30+%29.Content%3B&LockScreenMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveCalculator=true&RemoveCamera=true&RemoveClipchamp=true&RemoveClock=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveWindowsHello=true&RemoveFamily=true&RemoveFeedbackHub=true&RemoveGameAssist=true&RemoveGetHelp=true&RemoveHandwriting=true&RemoveInternetExplorer=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveRecall=true&RemoveRdpClient=true&RemoveSkype=true&RemoveSolitaire=true&RemoveSpeech=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWallet=true&RemoveWeather=true&RemoveFaxAndScan=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&FirstLogonScript0=%23+%2D%2D-+Section+1%3A+Enable+Ultimate+Performance+Power+Scheme+%2D%2D-%0D%0A%24guid+%3D+%27e9a42b02-d5df-448d-aa00-03f14749eb61%27%0D%0A%24out+%3D+%26+%22%24env%3Awindir%5CSystem32%5Cpowercfg.exe%22+%2FDuplicateScheme+%24guid%0D%0A%0D%0Aif+%28%24out+-match+%27%5Cs%28%5Ba-f0-9-%5D%7B36%7D%29%5Cs%27%29+%7B%0D%0A++++%24newSchemeGuid+%3D+%24Matches%5B1%5D%0D%0A++++%26+%22%24env%3Awindir%5CSystem32%5Cpowercfg.exe%22+%2FSetActive+%24newSchemeGuid%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+Section+2%3A+Install+Applications+via+Winget+%2D%2D-%0D%0A%24applications+%3D+%40%28%0D%0A++++%40%7B+Name+%3D+%227-Zip%22%3B+Id+%3D+%227zip.7zip%22+%7D%2C%0D%0A++++%40%7B+Name+%3D+%22TeamViewer%22%3B+Id+%3D+%22TeamViewer.TeamViewer%22+%7D%2C%0D%0A++++%40%7B+Name+%3D+%22Dell+Command+Update%22%3B+Id+%3D+%22Dell.CommandUpdate%22+%7D%0D%0A%29%0D%0A%0D%0Aforeach+%28%24app+in+%24applications%29+%7B%0D%0A++++winget+install+%2D%2Dexact+%2D%2Did+%24app.Id+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+Section+3%3A+Configure+Power+and+System+Settings+%2D%2D-%0D%0Apowercfg.exe+%2FHIBERNATE+OFF%0D%0Apowercfg+-change+-monitor-timeout-ac+30%0D%0Apowercfg+-change+-disk-timeout-ac+0%0D%0Apowercfg+-change+-standby-timeout-ac+0%0D%0Apowercfg+-change+-hibernate-timeout-ac+0%0D%0Apowercfg+-change+-hibernate-timeout-dc+0%0D%0A%0D%0A%23+%2D%2D-+Section+4%3A+Configure+Boot+Manager+%2D%2D-%0D%0Abcdedit+%2Fset+%7Bbootmgr%7D+displaybootmenu+yes%0D%0Abcdedit+%2Ftimeout+3%0D%0A%0D%0A%23+%2D%2D-+Section+5%3A+Disable+IPv6+on+Network+Adapters+%2D%2D-%0D%0Atry+%7B%0D%0A++++%24adapters+%3D+Get-NetAdapterBinding+-ComponentID+ms_tcpip6+%7C+Where-Object+%7B+%24_.Enabled+%7D%0D%0A++++%0D%0A++++if+%28%24adapters%29+%7B%0D%0A++++++++Disable-NetAdapterBinding+-Name+%24adapters.Name+-ComponentID+ms_tcpip6+-PassThru+%7C+Out-Null%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++%23+Errors+are+silently+ignored%0D%0A%7D&FirstLogonScriptType0=Ps1&UserOnceScript0=%23+Combine+taskbar+buttons+when+taskbar+is+full%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22TaskbarGlomLevel%22+-Value+1+-Type+DWord+-Force%0D%0A%23+Show+file+extensions+in+File+Explorer%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22HideFileExt%22+-Value+0+-Type+DWord+-Force%0D%0A%23+Disable+recommendations+in+Start%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_IrisRecommendations%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22ShowSyncProviderNotifications%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_AccountNotifications%22+-Value+0+-Type+DWord+-Force%0D%0A%23+Disable+tracking+app+launches%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_TrackProgs%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Remove+%223D+Objects%22+folder%0D%0ARemove-Item+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CDesktop%5CNameSpace%5C%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CHideDesktopIcons%5CNewStartPanel%22+-Name+%22%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22+-Value+1+-Type+DWord+-Force%0D%0ARemove-Item+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0ARemove-Item+%22HKLM%3A%5CSOFTWARE%5CWow6432Node%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0A%0D%0A%23+Disable+suggestions%2C+tips%2C+welcome+experience%2C+and+suggested+content%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-310093Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338388Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SystemPaneSuggestionsEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338389Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SoftLandingEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338393Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353694Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353696Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353698Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SilentInstalledAppsEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338387Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22RotatingLockScreenOverlayEnabled%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+various+notifications+and+suggestions%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CSystemSettings%5CAccountNotifications%22+-Name+%22EnableAccountNotifications%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CUserProfileEngagement%22+-Name+%22ScoobeSystemSettingEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CNotifications%5CSettings%5CWindows.SystemToast.Suggested%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CMobility%22+-Name+%22OptedIn%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Widgets+%28News+and+Interests%29+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CPolicyManager%5Cdefault%5CNewsAndInterests%5CAllowNewsAndInterests%22+-Name+%22value%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CDsh%22+-Name+%22AllowNewsAndInterests%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Windows+Copilot+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsCopilot%22+-Name+%22TurnOffWindowsCopilot%22+-Value+1+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+AI+Data+Analysis+%26+Recall+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22DisableAIDataAnalysis%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22DisableAIDataAnalysis%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22AllowRecallEnablement%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Advertising+ID+and+tailored+experiences%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CAdvertisingInfo%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CPrivacy%22+-Name+%22TailoredExperiencesWithDiagnosticDataEnabled%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Inking%2C+Typing%2C+and+Personalization+feedback%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInput%5CTIPC%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%22+-Name+%22RestrictImplicitInkCollection%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%22+-Name+%22RestrictImplicitTextCollection%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%5CTrainedDataStore%22+-Name+%22HarvestContacts%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CPersonalization%5CSettings%22+-Name+%22AcceptedPrivacyPolicy%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Set+diagnostic+data+to+Required+%28minimum%29+and+disable+Activity+History%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CPolicies%5CDataCollection%22+-Name+%22AllowTelemetry%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CSystem%22+-Name+%22PublishUserActivities%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Set+Feedback+Frequency+to+Never%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%22+-Name+%22NumberOfSIUFInPeriod%22+-Value+0+-Type+DWord+-Force%0D%0ARemove-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%22+-Name+%22PeriodInNanoSeconds%22+-Force+-ErrorAction+SilentlyContinue%0D%0A%0D%0A%23+Disable+Windows+Spotlight+on+Desktop%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CCloudContent%22+-Name+%22DisableSpotlightCollectionOnDesktop%22+-Value+1+-Type+DWord+-Force&UserOnceScriptType0=Ps1&RestartExplorer=true&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=Xray&AccountDisplayName0=&AccountPassword0=admin&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Label&TaskbarIconsMode=Empty&DisableWidgets=true&LeftTaskbar=true&HideTaskViewButton=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&EnableLongPaths=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Unattended&WifiName=Maven_Imaging&WifiAuthentication=WPA3SAE&WifiPassword=8655Maven&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Script&WallpaperScript=%23+%2D%2D-+PowerShell+Script+to+Download+and+Set+Desktop+Wallpaper+%2D%2D-%0D%0A%0D%0A%23+This+script+downloads+an+image+from+a+specified+URL%2C+saves+it+locally%2C%0D%0A%23+and+sets+it+as+the+desktop+wallpaper%2C+stretched+to+fit+the+screen.%0D%0A%0D%0A%23+Define+the+URL+of+the+wallpaper+image%0D%0A%24url+%3D+%27https%3A%2F%2Fraw.githubusercontent.com%2FSysAdminDoc%2FTools%2Frefs%2Fheads%2Fmain%2FMaven_Wallpaper.jpg%27%0D%0A%0D%0A%23+Define+the+path+to+save+the+wallpaper+on+the+local+machine.%0D%0A%23+Using+the+temp+directory+is+a+good+practice+for+temporary+files.%0D%0A%24wallpaperPath+%3D+%22%24env%3ATEMP%5Cwallpaper.jpg%22%0D%0A%0D%0AWrite-Host+%22Downloading+wallpaper+from+%24url...%22%0D%0Atry+%7B%0D%0A++++%23+Download+the+image+file+from+the+URL+and+save+it+to+the+specified+path.%0D%0A++++%23+-UseBasicParsing+is+often+used+to+avoid+issues+with+Internet+Explorer+dependencies.%0D%0A++++Invoke-WebRequest+-Uri+%24url+-OutFile+%24wallpaperPath+-UseBasicParsing+-TimeoutSec+30%0D%0A++++Write-Host+%22Wallpaper+successfully+downloaded+to+%24wallpaperPath%22%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++Write-Error+%22Failed+to+download+the+wallpaper.+Please+check+the+URL+and+your+internet+connection.%22%0D%0A++++Write-Error+%24_.Exception.Message%0D%0A++++%23+Stop+the+script+if+the+download+fails%0D%0A++++exit%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+Set+Wallpaper+Style+to+%27Stretch%27+%2D%2D-%0D%0A%23+To+stretch+the+wallpaper%2C+we+need+to+modify+the+registry.%0D%0A%23+WallpaperStyle+%272%27+corresponds+to+the+%27Stretch%27+option.%0D%0A%23+TileWallpaper+%270%27+ensures+that+the+image+is+not+tiled.%0D%0A%24regKey+%3D+%22HKCU%3A%5CControl+Panel%5CDesktop%22%0D%0ASet-ItemProperty+-Path+%24regKey+-Name+WallpaperStyle+-Value+2%0D%0ASet-ItemProperty+-Path+%24regKey+-Name+TileWallpaper+-Value+0%0D%0A%0D%0A%23+%2D%2D-+Apply+the+Wallpaper+%2D%2D-%0D%0A%23+We+use+the+SystemParametersInfo+function+from+user32.dll+to+apply+the+change+immediately.%0D%0A%23+This+is+more+reliable+than+just+changing+the+registry+key+alone.%0D%0A%0D%0A%23+Define+the+C%23+signature+for+the+SystemParametersInfo+function.%0D%0A%24code+%3D+%40%27%0D%0Ausing+System%3B%0D%0Ausing+System.Runtime.InteropServices%3B%0D%0Ausing+Microsoft.Win32%3B%0D%0A%0D%0Apublic+class+Wallpaper+%7B%0D%0A++++%5BDllImport%28%22user32.dll%22%2C+CharSet+%3D+CharSet.Auto%29%5D%0D%0A++++public+static+extern+int+SystemParametersInfo%28int+uAction%2C+int+uParam%2C+string+lpvParam%2C+int+fuWinIni%29%3B%0D%0A%0D%0A++++public+static+void+Set%28string+path%29+%7B%0D%0A++++++++%2F%2F+Constants+for+setting+the+wallpaper%0D%0A++++++++const+int+SET_DESKTOP_WALLPAPER+%3D+20%3B%0D%0A++++++++const+int+UPDATE_INI_FILE+%3D+0x1%3B%0D%0A++++++++const+int+SEND_WINDOWS_INI_CHANGE+%3D+0x2%3B%0D%0A%0D%0A++++++++%2F%2F+Set+the+wallpaper+using+the+SystemParametersInfo+function%0D%0A++++++++SystemParametersInfo%28SET_DESKTOP_WALLPAPER%2C+0%2C+path%2C+UPDATE_INI_FILE+%7C+SEND_WINDOWS_INI_CHANGE%29%3B%0D%0A++++%7D%0D%0A%7D%0D%0A%27%40%0D%0A%0D%0Atry+%7B%0D%0A++++%23+Add+the+C%23+code+as+a+new+type+in+the+current+PowerShell+session%0D%0A++++Add-Type+-TypeDefinition+%24code%0D%0A%0D%0A++++Write-Host+%22Setting+desktop+wallpaper...%22%0D%0A++++%23+Call+the+static+%27Set%27+method+from+our+new+%27Wallpaper%27+class%0D%0A++++%5BWallpaper%5D%3A%3ASet%28%24wallpaperPath%29%0D%0A%0D%0A++++Write-Host+%22Wallpaper+has+been+successfully+updated%21%22%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++Write-Error+%22An+error+occurred+while+setting+the+wallpaper.%22%0D%0A++++Write-Error+%24_.Exception.Message%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+End+of+Script+%2D%2D-%0D%0A&LockScreenMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveCalculator=true&RemoveCamera=true&RemoveClipchamp=true&RemoveClock=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveWindowsHello=true&RemoveFamily=true&RemoveFeedbackHub=true&RemoveGameAssist=true&RemoveGetHelp=true&RemoveHandwriting=true&RemoveInternetExplorer=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveRecall=true&RemoveRdpClient=true&RemoveSkype=true&RemoveSolitaire=true&RemoveSpeech=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWallet=true&RemoveWeather=true&RemoveFaxAndScan=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&FirstLogonScript0=%23+%2D%2D-+Section+1%3A+Enable+Ultimate+Performance+Power+Scheme+%2D%2D-%0D%0A%24guid+%3D+%27e9a42b02-d5df-448d-aa00-03f14749eb61%27%0D%0A%24out+%3D+%26+%22%24env%3Awindir%5CSystem32%5Cpowercfg.exe%22+%2FDuplicateScheme+%24guid%0D%0A%0D%0Aif+%28%24out+-match+%27%5Cs%28%5Ba-f0-9-%5D%7B36%7D%29%5Cs%27%29+%7B%0D%0A++++%24newSchemeGuid+%3D+%24Matches%5B1%5D%0D%0A++++%26+%22%24env%3Awindir%5CSystem32%5Cpowercfg.exe%22+%2FSetActive+%24newSchemeGuid%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+Section+2%3A+Install+Applications+via+Winget+%2D%2D-%0D%0A%24applications+%3D+%40%28%0D%0A++++%40%7B+Name+%3D+%227-Zip%22%3B+Id+%3D+%227zip.7zip%22+%7D%2C%0D%0A++++%40%7B+Name+%3D+%22TeamViewer%22%3B+Id+%3D+%22TeamViewer.TeamViewer%22+%7D%2C%0D%0A++++%40%7B+Name+%3D+%22Dell+Command+Update%22%3B+Id+%3D+%22Dell.CommandUpdate%22+%7D%0D%0A%29%0D%0A%0D%0Aforeach+%28%24app+in+%24applications%29+%7B%0D%0A++++winget+install+%2D%2Dexact+%2D%2Did+%24app.Id+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine%0D%0A%7D%0D%0A%0D%0A%23+%2D%2D-+Section+3%3A+Configure+Power+and+System+Settings+%2D%2D-%0D%0Apowercfg.exe+%2FHIBERNATE+OFF%0D%0Apowercfg+-change+-monitor-timeout-ac+30%0D%0Apowercfg+-change+-disk-timeout-ac+0%0D%0Apowercfg+-change+-standby-timeout-ac+0%0D%0Apowercfg+-change+-hibernate-timeout-ac+0%0D%0Apowercfg+-change+-hibernate-timeout-dc+0%0D%0A%0D%0A%23+%2D%2D-+Section+4%3A+Configure+Boot+Manager+%2D%2D-%0D%0Abcdedit+%2Fset+%7Bbootmgr%7D+displaybootmenu+yes%0D%0Abcdedit+%2Ftimeout+3%0D%0A%0D%0A%23+%2D%2D-+Section+5%3A+Disable+IPv6+on+Network+Adapters+%2D%2D-%0D%0Atry+%7B%0D%0A++++%24adapters+%3D+Get-NetAdapterBinding+-ComponentID+ms_tcpip6+%7C+Where-Object+%7B+%24_.Enabled+%7D%0D%0A++++%0D%0A++++if+%28%24adapters%29+%7B%0D%0A++++++++Disable-NetAdapterBinding+-Name+%24adapters.Name+-ComponentID+ms_tcpip6+-PassThru+%7C+Out-Null%0D%0A++++%7D%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++%23+Errors+are+silently+ignored%0D%0A%7D&FirstLogonScriptType0=Ps1&UserOnceScript0=%23+Combine+taskbar+buttons+when+taskbar+is+full%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22TaskbarGlomLevel%22+-Value+1+-Type+DWord+-Force%0D%0A%23+Show+file+extensions+in+File+Explorer%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22HideFileExt%22+-Value+0+-Type+DWord+-Force%0D%0A%23+Disable+recommendations+in+Start%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_IrisRecommendations%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22ShowSyncProviderNotifications%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_AccountNotifications%22+-Value+0+-Type+DWord+-Force%0D%0A%23+Disable+tracking+app+launches%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%22+-Name+%22Start_TrackProgs%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Remove+%223D+Objects%22+folder%0D%0ARemove-Item+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CDesktop%5CNameSpace%5C%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CHideDesktopIcons%5CNewStartPanel%22+-Name+%22%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22+-Value+1+-Type+DWord+-Force%0D%0ARemove-Item+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0ARemove-Item+%22HKLM%3A%5CSOFTWARE%5CWow6432Node%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%22+-Recurse+-Force+-ErrorAction+SilentlyContinue%0D%0A%0D%0A%23+Disable+suggestions%2C+tips%2C+welcome+experience%2C+and+suggested+content%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-310093Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338388Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SystemPaneSuggestionsEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338389Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SoftLandingEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338393Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353694Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353696Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-353698Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SilentInstalledAppsEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22SubscribedContent-338387Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%22+-Name+%22RotatingLockScreenOverlayEnabled%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+various+notifications+and+suggestions%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CSystemSettings%5CAccountNotifications%22+-Name+%22EnableAccountNotifications%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CUserProfileEngagement%22+-Name+%22ScoobeSystemSettingEnabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CNotifications%5CSettings%5CWindows.SystemToast.Suggested%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CMobility%22+-Name+%22OptedIn%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Widgets+%28News+and+Interests%29+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CPolicyManager%5Cdefault%5CNewsAndInterests%5CAllowNewsAndInterests%22+-Name+%22value%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CDsh%22+-Name+%22AllowNewsAndInterests%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Windows+Copilot+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsCopilot%22+-Name+%22TurnOffWindowsCopilot%22+-Value+1+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+AI+Data+Analysis+%26+Recall+via+Policy%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22DisableAIDataAnalysis%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22DisableAIDataAnalysis%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%22+-Name+%22AllowRecallEnablement%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Advertising+ID+and+tailored+experiences%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CAdvertisingInfo%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CPrivacy%22+-Name+%22TailoredExperiencesWithDiagnosticDataEnabled%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Disable+Inking%2C+Typing%2C+and+Personalization+feedback%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInput%5CTIPC%22+-Name+%22Enabled%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%22+-Name+%22RestrictImplicitInkCollection%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%22+-Name+%22RestrictImplicitTextCollection%22+-Value+1+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CInputPersonalization%5CTrainedDataStore%22+-Name+%22HarvestContacts%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CMicrosoft%5CPersonalization%5CSettings%22+-Name+%22AcceptedPrivacyPolicy%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Set+diagnostic+data+to+Required+%28minimum%29+and+disable+Activity+History%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CPolicies%5CDataCollection%22+-Name+%22AllowTelemetry%22+-Value+0+-Type+DWord+-Force%0D%0ASet-ItemProperty+-Path+%22HKLM%3A%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CSystem%22+-Name+%22PublishUserActivities%22+-Value+0+-Type+DWord+-Force%0D%0A%0D%0A%23+Set+Feedback+Frequency+to+Never%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%22+-Name+%22NumberOfSIUFInPeriod%22+-Value+0+-Type+DWord+-Force%0D%0ARemove-ItemProperty+-Path+%22HKCU%3A%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%22+-Name+%22PeriodInNanoSeconds%22+-Force+-ErrorAction+SilentlyContinue%0D%0A%0D%0A%23+Disable+Windows+Spotlight+on+Desktop%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CCloudContent%22+-Name+%22DisableSpotlightCollectionOnDesktop%22+-Value+1+-Type+DWord+-Force&UserOnceScriptType0=Ps1&RestartExplorer=true&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
-		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<UILanguage>en-US</UILanguage>
-		</component>
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<ImageInstall>
-				<OSImage>
-					<InstallTo>
-						<DiskID>0</DiskID>
-						<PartitionID>3</PartitionID>
-					</InstallTo>
-				</OSImage>
-			</ImageInstall>
 			<UserData>
 				<ProductKey>
 					<Key>00000-00000-00000-00000-00000</Key>
@@ -23,32 +12,10 @@
 				<AcceptEula>true</AcceptEula>
 			</UserData>
 			<UseConfigurationSet>false</UseConfigurationSet>
-			<RunSynchronous>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>1</Order>
-					<Path>cmd.exe /c "&gt;&gt;"X:\diskpart.txt" (echo:SELECT DISK=0&amp;echo:CLEAN&amp;echo:CONVERT GPT&amp;echo:CREATE PARTITION EFI SIZE=300&amp;echo:FORMAT QUICK FS=FAT32 LABEL=^"System^"&amp;echo:ASSIGN LETTER=S&amp;echo:CREATE PARTITION MSR SIZE=16&amp;echo:CREATE PARTITION PRIMARY)"</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>2</Order>
-					<Path>cmd.exe /c "&gt;&gt;"X:\diskpart.txt" (echo:SHRINK MINIMUM=1000&amp;echo:FORMAT QUICK FS=NTFS LABEL=^"Windows^"&amp;echo:ASSIGN LETTER=W&amp;echo:CREATE PARTITION PRIMARY&amp;echo:FORMAT QUICK FS=NTFS LABEL=^"Recovery^"&amp;echo:ASSIGN LETTER=R)"</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>3</Order>
-					<Path>cmd.exe /c "&gt;&gt;"X:\diskpart.txt" (echo:SET ID=^"de94bba4-06d1-4d40-a16a-bfd50179d6ac^"&amp;echo:GPT ATTRIBUTES=0x8000000000000001)"</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>4</Order>
-					<Path>cmd.exe /c "diskpart.exe /s "X:\diskpart.txt" &gt;&gt;"X:\diskpart.log" || ( type "X:\diskpart.log" &amp; echo diskpart encountered an error. &amp; pause &amp; exit /b 1 )"</Path>
-				</RunSynchronousCommand>
-			</RunSynchronous>
 		</component>
 	</settings>
 	<settings pass="generalize"></settings>
 	<settings pass="specialize">
-		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<ComputerName>Maven</ComputerName>
-			<TimeZone>UTC</TimeZone>
-		</component>
 		<component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<RunSynchronous>
 				<RunSynchronousCommand wcm:action="add">
@@ -77,12 +44,6 @@
 	<settings pass="auditSystem"></settings>
 	<settings pass="auditUser"></settings>
 	<settings pass="oobeSystem">
-		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<InputLocale>0409:00000409</InputLocale>
-			<SystemLocale>en-US</SystemLocale>
-			<UILanguage>en-US</UILanguage>
-			<UserLocale>en-US</UserLocale>
-		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserAccounts>
 				<LocalAccounts>
@@ -432,26 +393,6 @@ End If
 	&lt;/Actions&gt;
 &lt;/Task&gt;
 		</File>
-		<File path="C:\Windows\Setup\Scripts\TurnOffSystemSounds.ps1">
-$excludes = Get-ChildItem -LiteralPath 'Registry::HKU\DefaultUser\AppEvents\EventLabels' |
-    Where-Object -FilterScript { ($_ | Get-ItemProperty).ExcludeFromCPL -eq 1; } |
-    Select-Object -ExpandProperty 'PSChildName';
-Get-ChildItem -Path 'Registry::HKU\DefaultUser\AppEvents\Schemes\Apps\*\*' |
-    Where-Object -Property 'PSChildName' -NotIn $excludes |
-    Get-ChildItem -Include '.Current' | Set-ItemProperty -Name '(Default)' -Value '';
-		</File>
-		<File path="C:\Windows\Setup\Scripts\VMwareTools.ps1">
-&amp; {
-	foreach( $letter in 'DEFGHIJKLMNOPQRSTUVWXYZ'.ToCharArray() ) {
-		$exe = "${letter}:\setup.exe";
-		if( ( Get-Item -LiteralPath $exe -ErrorAction 'SilentlyContinue' | Select-Object -ExpandProperty 'VersionInfo' | Select-Object -ExpandProperty 'ProductName' ) -eq 'VMware Tools' ) {
-			Start-Process -FilePath $exe -ArgumentList '/s /v /qn REBOOT=R' -Wait;
-			return;
-		}
-	}
-	'VMware Tools image (windows.iso) is not attached to this VM.';
-} *&gt;&amp;1 &gt;&gt; "C:\Windows\Setup\Scripts\VMwareTools.log";
-		</File>
 		<File path="C:\Windows\Setup\Scripts\SetStartPins.ps1">
 $json = '{"pinnedList":[]}';
 if( [System.Environment]::OSVersion.Version.Build -lt 20000 ) {
@@ -472,8 +413,82 @@ Set-ItemProperty -LiteralPath $key -Name 'ConfigureStartPins' -Value $json -Type
 &lt;/LayoutModificationTemplate&gt;
 		</File>
 		<File path="C:\Windows\Setup\Scripts\GetWallpaper.ps1">
-$url = 'https://raw.githubusercontent.com/SysAdminDoc/Tools/refs/heads/main/Maven_Wallpaper.jpg';
-return ( Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30 ).Content;
+# --- PowerShell Script to Download and Set Desktop Wallpaper ---
+
+# This script downloads an image from a specified URL, saves it locally,
+# and sets it as the desktop wallpaper, stretched to fit the screen.
+
+# Define the URL of the wallpaper image
+$url = 'https://raw.githubusercontent.com/SysAdminDoc/Tools/refs/heads/main/Maven_Wallpaper.jpg'
+
+# Define the path to save the wallpaper on the local machine.
+# Using the temp directory is a good practice for temporary files.
+$wallpaperPath = "$env:TEMP\wallpaper.jpg"
+
+Write-Host "Downloading wallpaper from $url..."
+try {
+    # Download the image file from the URL and save it to the specified path.
+    # -UseBasicParsing is often used to avoid issues with Internet Explorer dependencies.
+    Invoke-WebRequest -Uri $url -OutFile $wallpaperPath -UseBasicParsing -TimeoutSec 30
+    Write-Host "Wallpaper successfully downloaded to $wallpaperPath"
+}
+catch {
+    Write-Error "Failed to download the wallpaper. Please check the URL and your internet connection."
+    Write-Error $_.Exception.Message
+    # Stop the script if the download fails
+    exit
+}
+
+# --- Set Wallpaper Style to 'Stretch' ---
+# To stretch the wallpaper, we need to modify the registry.
+# WallpaperStyle '2' corresponds to the 'Stretch' option.
+# TileWallpaper '0' ensures that the image is not tiled.
+$regKey = "HKCU:\Control Panel\Desktop"
+Set-ItemProperty -Path $regKey -Name WallpaperStyle -Value 2
+Set-ItemProperty -Path $regKey -Name TileWallpaper -Value 0
+
+# --- Apply the Wallpaper ---
+# We use the SystemParametersInfo function from user32.dll to apply the change immediately.
+# This is more reliable than just changing the registry key alone.
+
+# Define the C# signature for the SystemParametersInfo function.
+$code = @'
+using System;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
+
+public class Wallpaper {
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+
+    public static void Set(string path) {
+        // Constants for setting the wallpaper
+        const int SET_DESKTOP_WALLPAPER = 20;
+        const int UPDATE_INI_FILE = 0x1;
+        const int SEND_WINDOWS_INI_CHANGE = 0x2;
+
+        // Set the wallpaper using the SystemParametersInfo function
+        SystemParametersInfo(SET_DESKTOP_WALLPAPER, 0, path, UPDATE_INI_FILE | SEND_WINDOWS_INI_CHANGE);
+    }
+}
+'@
+
+try {
+    # Add the C# code as a new type in the current PowerShell session
+    Add-Type -TypeDefinition $code
+
+    Write-Host "Setting desktop wallpaper..."
+    # Call the static 'Set' method from our new 'Wallpaper' class
+    [Wallpaper]::Set($wallpaperPath)
+
+    Write-Host "Wallpaper has been successfully updated!"
+}
+catch {
+    Write-Error "An error occurred while setting the wallpaper."
+    Write-Error $_.Exception.Message
+}
+
+# --- End of Script ---
 		</File>
 		<File path="C:\Windows\Setup\Scripts\SetWallpaper.ps1">
 Add-Type -TypeDefinition '
@@ -696,20 +711,7 @@ $scripts = @(
 		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
 	};
 	{
-		Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;
-	};
-	{
-		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f;
-	};
-	{
 		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;
-	};
-	{
-		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v DisableStartupSound /t REG_DWORD /d 1 /f;
-		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides" /v UserSetting_DisableStartupSound /t REG_DWORD /d 1 /f;
-	};
-	{
-		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 1 /f;
 	};
 	{
 		reg.exe add "HKLM\Software\Policies\Microsoft\Edge" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;
@@ -720,9 +722,6 @@ $scripts = @(
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetStartPins.ps1' -Raw | Invoke-Expression;
-	};
-	{
-		reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
 	};
 	{
 		try {
@@ -763,15 +762,6 @@ $scripts = @(
 	};
 	{
 		[System.Diagnostics.EventLog]::WriteEntry( 'UnattendGenerator', "User '$env:USERNAME' has requested to unlock the Start menu layout.", [System.Diagnostics.EventLogEntryType]::Information, 1 );
-	};
-	{
-		Set-ItemProperty -LiteralPath 'Registry::HKCU\AppEvents\Schemes' -Name '(Default)' -Type 'String' -Value '.None';
-	};
-	{
-		reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /f;
-	};
-	{
-		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'LaunchTo' -Type 'DWord' -Value 1;
 	};
 	{
 		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value 3;
@@ -833,41 +823,10 @@ $scripts = @(
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;
 	};
 	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\TurnOffSystemSounds.ps1' -Raw | Invoke-Expression;
-	};
-	{
-		$names = @(
-		  'ContentDeliveryAllowed';
-		  'FeatureManagementEnabled';
-		  'OEMPreInstalledAppsEnabled';
-		  'PreInstalledAppsEnabled';
-		  'PreInstalledAppsEverEnabled';
-		  'SilentInstalledAppsEnabled';
-		  'SoftLandingEnabled';
-		  'SubscribedContentEnabled';
-		  'SubscribedContent-310093Enabled';
-		  'SubscribedContent-338387Enabled';
-		  'SubscribedContent-338388Enabled';
-		  'SubscribedContent-338389Enabled';
-		  'SubscribedContent-338393Enabled';
-		  'SubscribedContent-353694Enabled';
-		  'SubscribedContent-353696Enabled';
-		  'SubscribedContent-353698Enabled';
-		  'SystemPaneSuggestionsEnabled';
-		);
-		
-		foreach( $name in $names ) {
-		  reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v $name /t REG_DWORD /d 0 /f;
-		}
-	};
-	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarAl /t REG_DWORD /d 0 /f;
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;
-	};
-	{
-		reg.exe add "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Normal -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
@@ -900,9 +859,6 @@ $scripts = @(
 $scripts = @(
 	{
 		Set-ItemProperty -LiteralPath 'Registry::HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'AutoLogonCount' -Type 'DWord' -Force -Value 0;
-	};
-	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\VMwareTools.ps1' -Raw | Invoke-Expression;
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-01.ps1' -Raw | Invoke-Expression;
