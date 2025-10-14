@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=Xray&AccountDisplayName0=&AccountPassword0=admin&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Hide&TaskbarIconsMode=Empty&DisableWidgets=true&LeftTaskbar=true&HideTaskViewButton=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&EnableLongPaths=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Interactive&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Script&WallpaperScript=%24url+%3D+%27https%3A%2F%2Fraw.githubusercontent.com%2FSysAdminDoc%2FTools%2Frefs%2Fheads%2Fmain%2FMaven_Wallpaper.jpg%27%0D%0A%0D%0A%24destinationFolder+%3D+%22%24env%3AProgramData%5CCompanyWallpaper%22%0D%0A%24wallpaperPath+%3D+Join-Path+-Path+%24destinationFolder+-ChildPath+%22wallpaper.jpg%22%0D%0A%0D%0Atry+%7B%0D%0A++++if+%28-not+%28Test-Path+-Path+%24destinationFolder%29%29+%7B%0D%0A++++++++New-Item+-Path+%24destinationFolder+-ItemType+Directory+-Force+%7C+Out-Null%0D%0A++++%7D%0D%0A++++Invoke-WebRequest+-Uri+%24url+-OutFile+%24wallpaperPath+-UseBasicParsing+-TimeoutSec+60%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++%23+Exit+silently+if+the+download+fails%0D%0A++++exit+1%0D%0A%7D%0D%0A%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+WallpaperStyle+-Value+2+%23+2+%3D+Stretch%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+TileWallpaper+-Value+0+%23+0+%3D+False%0D%0A%0D%0A%24code+%3D+%40%27%0D%0Ausing+System.Runtime.InteropServices%3B%0D%0Apublic+class+Wallpaper+%7B%0D%0A++++%5BDllImport%28%22user32.dll%22%2C+CharSet+%3D+CharSet.Auto%29%5D%0D%0A++++public+static+extern+int+SystemParametersInfo%28int+uAction%2C+int+uParam%2C+string+lpvParam%2C+int+fuWinIni%29%3B%0D%0A++++public+static+void+Set%28string+path%29+%7B%0D%0A++++++++SystemParametersInfo%2820%2C+0%2C+path%2C+0x1+%7C+0x2%29%3B%0D%0A++++%7D%0D%0A%7D%0D%0A%27%40%0D%0AAdd-Type+-TypeDefinition+%24code%0D%0A%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+Wallpaper+-Value+%24wallpaperPath%0D%0A%5BWallpaper%5D%3A%3ASet%28%24wallpaperPath%29&LockScreenMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveCalculator=true&RemoveCamera=true&RemoveClipchamp=true&RemoveClock=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveWindowsHello=true&RemoveFamily=true&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveInternetExplorer=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveRecall=true&RemoveRdpClient=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWallet=true&RemoveWeather=true&RemoveFaxAndScan=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&SystemScript0=powercfg+%2Fchange+disk-timeout-ac+0%0D%0Apowercfg+%2Fchange+hibernate-timeout-ac+0%0D%0Apowercfg+%2Fchange+hibernate-timeout-dc+0%0D%0Apowercfg+%2Fchange+monitor-timeout-ac+30%0D%0Apowercfg+%2Fchange+standby-timeout-ac+0%0D%0Apowercfg+%2Fhibernate+off&SystemScriptType0=Cmd&UserOnceScript1=winget+install+%2D%2Dexact+%2D%2Did+TeamViewer.TeamViewer+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine&UserOnceScriptType1=Ps1&UserOnceScript2=winget+upgrade+%2D%2Dall+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine&UserOnceScriptType2=Ps1&UserOnceScript3=Windows+Registry+Editor+Version+5.00%0D%0A%0D%0A%3B+Disable+Telemetry+and+Data+Collection%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInput%5CTIPC%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInputPersonalization%5D%0D%0A%22RestrictImplicitInkCollection%22%3Ddword%3A00000001%0D%0A%22RestrictImplicitTextCollection%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInputPersonalization%5CTrainedDataStore%5D%0D%0A%22HarvestContacts%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CPersonalization%5CSettings%5D%0D%0A%22AcceptedPrivacyPolicy%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%5D%0D%0A%22NumberOfSIUFInPeriod%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CAdvertisingInfo%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CPrivacy%5D%0D%0A%22TailoredExperiencesWithDiagnosticDataEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CUserProfileEngagement%5D%0D%0A%22ScoobeSystemSettingEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CPolicies%5CDataCollection%5D%0D%0A%22AllowTelemetry%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CSystem%5D%0D%0A%22PublishUserActivities%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Disable+Suggestions%2C+Ads%2C+and+Cloud+Content%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%5D%0D%0A%22RotatingLockScreenOverlayEnabled%22%3Ddword%3A00000000%0D%0A%22SilentInstalledAppsEnabled%22%3Ddword%3A00000000%0D%0A%22SoftLandingEnabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-310093Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338387Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338388Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338389Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338393Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353694Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353696Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353698Enabled%22%3Ddword%3A00000000%0D%0A%22SystemPaneSuggestionsEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%5D%0D%0A%22ShowSyncProviderNotifications%22%3Ddword%3A00000000%0D%0A%22Start_AccountNotifications%22%3Ddword%3A00000000%0D%0A%22Start_IrisRecommendations%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CNotifications%5CSettings%5CWindows.SystemToast.Suggested%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CSystemSettings%5CAccountNotifications%5D%0D%0A%22EnableAccountNotifications%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CCloudContent%5D%0D%0A%22DisableSpotlightCollectionOnDesktop%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CPolicyManager%5Cdefault%5CNewsAndInterests%5CAllowNewsAndInterests%5D%0D%0A%22value%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CDsh%5D%0D%0A%22AllowNewsAndInterests%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Disable+AI+Features+%28Copilot%2C+Recall%2C+etc.%29%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%5D%0D%0A%22DisableAIDataAnalysis%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsCopilot%5D%0D%0A%22TurnOffWindowsCopilot%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%5D%0D%0A%22AllowRecallEnablement%22%3Ddword%3A00000000%0D%0A%22DisableAIDataAnalysis%22%3Ddword%3A00000001%0D%0A%0D%0A%3B+UI+and+Explorer+Tweaks%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%5D%0D%0A%22HideFileExt%22%3Ddword%3A00000000%0D%0A%22Start_TrackProgs%22%3Ddword%3A00000000%0D%0A%22TaskbarGlomLevel%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CHideDesktopIcons%5CNewStartPanel%5D%0D%0A%22%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22%3Ddword%3A00000001%0D%0A%0D%0A%3B+Miscellaneous+Settings%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CMobility%5D%0D%0A%22OptedIn%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Remove+Explorer+Namespace+Entries%0D%0A%5B-HKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CDesktop%5CNameSpace%5C%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%5D%0D%0A%5B-HKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%5D%0D%0A%5B-HKEY_LOCAL_MACHINE%5CSOFTWARE%5CWow6432Node%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%5D&UserOnceScriptType3=Reg&RestartExplorer=true&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=Xray&AccountDisplayName0=&AccountPassword0=admin&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Hide&TaskbarIconsMode=Empty&DisableWidgets=true&LeftTaskbar=true&HideTaskViewButton=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&EnableLongPaths=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Interactive&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Default&LockScreenMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveCalculator=true&RemoveCamera=true&RemoveClipchamp=true&RemoveClock=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveWindowsHello=true&RemoveFamily=true&RemoveFeedbackHub=true&RemoveGameAssist=true&RemoveGetHelp=true&RemoveHandwriting=true&RemoveInternetExplorer=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveRecall=true&RemoveRdpClient=true&RemoveSkype=true&RemoveSolitaire=true&RemoveSpeech=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWallet=true&RemoveWeather=true&RemoveFaxAndScan=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&SystemScript0=powercfg+%2Fchange+disk-timeout-ac+0%0D%0Apowercfg+%2Fchange+hibernate-timeout-ac+0%0D%0Apowercfg+%2Fchange+hibernate-timeout-dc+0%0D%0Apowercfg+%2Fchange+monitor-timeout-ac+30%0D%0Apowercfg+%2Fchange+standby-timeout-ac+0%0D%0Apowercfg+%2Fhibernate+off&SystemScriptType0=Cmd&UserOnceScript0=%24url+%3D+%27https%3A%2F%2Fraw.githubusercontent.com%2FSysAdminDoc%2FTools%2Frefs%2Fheads%2Fmain%2FMaven_Wallpaper.jpg%27%0D%0A%0D%0A%24destinationFolder+%3D+%22%24env%3AProgramData%5CCompanyWallpaper%22%0D%0A%24wallpaperPath+%3D+Join-Path+-Path+%24destinationFolder+-ChildPath+%22wallpaper.jpg%22%0D%0A%0D%0Atry+%7B%0D%0A++++if+%28-not+%28Test-Path+-Path+%24destinationFolder%29%29+%7B%0D%0A++++++++New-Item+-Path+%24destinationFolder+-ItemType+Directory+-Force+%7C+Out-Null%0D%0A++++%7D%0D%0A++++Invoke-WebRequest+-Uri+%24url+-OutFile+%24wallpaperPath+-UseBasicParsing+-TimeoutSec+60%0D%0A%7D%0D%0Acatch+%7B%0D%0A++++%23+Exit+silently+if+the+download+fails%0D%0A++++exit+1%0D%0A%7D%0D%0A%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+WallpaperStyle+-Value+2+%23+2+%3D+Stretch%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+TileWallpaper+-Value+0+%23+0+%3D+False%0D%0A%0D%0A%24code+%3D+%40%27%0D%0Ausing+System.Runtime.InteropServices%3B%0D%0Apublic+class+Wallpaper+%7B%0D%0A++++%5BDllImport%28%22user32.dll%22%2C+CharSet+%3D+CharSet.Auto%29%5D%0D%0A++++public+static+extern+int+SystemParametersInfo%28int+uAction%2C+int+uParam%2C+string+lpvParam%2C+int+fuWinIni%29%3B%0D%0A++++public+static+void+Set%28string+path%29+%7B%0D%0A++++++++SystemParametersInfo%2820%2C+0%2C+path%2C+0x1+%7C+0x2%29%3B%0D%0A++++%7D%0D%0A%7D%0D%0A%27%40%0D%0AAdd-Type+-TypeDefinition+%24code%0D%0A%0D%0ASet-ItemProperty+-Path+%22HKCU%3A%5CControl+Panel%5CDesktop%22+-Name+Wallpaper+-Value+%24wallpaperPath%0D%0A%5BWallpaper%5D%3A%3ASet%28%24wallpaperPath%29&UserOnceScriptType0=Ps1&UserOnceScript1=winget+install+%2D%2Dexact+%2D%2Did+TeamViewer.TeamViewer+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine&UserOnceScriptType1=Ps1&UserOnceScript2=winget+upgrade+%2D%2Dall+%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%2D%2Dscope+machine&UserOnceScriptType2=Ps1&UserOnceScript3=Windows+Registry+Editor+Version+5.00%0D%0A%0D%0A%3B+Disable+Telemetry+and+Data+Collection%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInput%5CTIPC%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInputPersonalization%5D%0D%0A%22RestrictImplicitInkCollection%22%3Ddword%3A00000001%0D%0A%22RestrictImplicitTextCollection%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CInputPersonalization%5CTrainedDataStore%5D%0D%0A%22HarvestContacts%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CPersonalization%5CSettings%5D%0D%0A%22AcceptedPrivacyPolicy%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSOFTWARE%5CMicrosoft%5CSiuf%5CRules%5D%0D%0A%22NumberOfSIUFInPeriod%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CAdvertisingInfo%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CPrivacy%5D%0D%0A%22TailoredExperiencesWithDiagnosticDataEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CUserProfileEngagement%5D%0D%0A%22ScoobeSystemSettingEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CPolicies%5CDataCollection%5D%0D%0A%22AllowTelemetry%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CSystem%5D%0D%0A%22PublishUserActivities%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Disable+Suggestions%2C+Ads%2C+and+Cloud+Content%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager%5D%0D%0A%22RotatingLockScreenOverlayEnabled%22%3Ddword%3A00000000%0D%0A%22SilentInstalledAppsEnabled%22%3Ddword%3A00000000%0D%0A%22SoftLandingEnabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-310093Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338387Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338388Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338389Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-338393Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353694Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353696Enabled%22%3Ddword%3A00000000%0D%0A%22SubscribedContent-353698Enabled%22%3Ddword%3A00000000%0D%0A%22SystemPaneSuggestionsEnabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%5D%0D%0A%22ShowSyncProviderNotifications%22%3Ddword%3A00000000%0D%0A%22Start_AccountNotifications%22%3Ddword%3A00000000%0D%0A%22Start_IrisRecommendations%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CNotifications%5CSettings%5CWindows.SystemToast.Suggested%5D%0D%0A%22Enabled%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CSystemSettings%5CAccountNotifications%5D%0D%0A%22EnableAccountNotifications%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CCloudContent%5D%0D%0A%22DisableSpotlightCollectionOnDesktop%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CPolicyManager%5Cdefault%5CNewsAndInterests%5CAllowNewsAndInterests%5D%0D%0A%22value%22%3Ddword%3A00000000%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CDsh%5D%0D%0A%22AllowNewsAndInterests%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Disable+AI+Features+%28Copilot%2C+Recall%2C+etc.%29%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%5D%0D%0A%22DisableAIDataAnalysis%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CPolicies%5CMicrosoft%5CWindows%5CWindowsCopilot%5D%0D%0A%22TurnOffWindowsCopilot%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_LOCAL_MACHINE%5CSOFTWARE%5CPolicies%5CMicrosoft%5CWindows%5CWindowsAI%5D%0D%0A%22AllowRecallEnablement%22%3Ddword%3A00000000%0D%0A%22DisableAIDataAnalysis%22%3Ddword%3A00000001%0D%0A%0D%0A%3B+UI+and+Explorer+Tweaks%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced%5D%0D%0A%22HideFileExt%22%3Ddword%3A00000000%0D%0A%22Start_TrackProgs%22%3Ddword%3A00000000%0D%0A%22TaskbarGlomLevel%22%3Ddword%3A00000001%0D%0A%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CHideDesktopIcons%5CNewStartPanel%5D%0D%0A%22%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%22%3Ddword%3A00000001%0D%0A%0D%0A%3B+Miscellaneous+Settings%0D%0A%5BHKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CMobility%5D%0D%0A%22OptedIn%22%3Ddword%3A00000000%0D%0A%0D%0A%3B+Remove+Explorer+Namespace+Entries%0D%0A%5B-HKEY_CURRENT_USER%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CDesktop%5CNameSpace%5C%7B2cc5ca98-6485-489a-920e-b3e88a6ccce3%7D%5D%0D%0A%5B-HKEY_LOCAL_MACHINE%5CSOFTWARE%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%5D%0D%0A%5B-HKEY_LOCAL_MACHINE%5CSOFTWARE%5CWow6432Node%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CMyComputer%5CNameSpace%5C%7B0DB7E03F-FC29-4DC6-9020-FF41B59E513A%7D%5D&UserOnceScriptType3=Reg&RestartExplorer=true&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -111,6 +111,7 @@ $selectors = @(
 	'Microsoft.Windows.DevHome';
 	'MicrosoftCorporationII.MicrosoftFamily';
 	'Microsoft.WindowsFeedbackHub';
+	'Microsoft.Edge.GameAssist';
 	'Microsoft.GetHelp';
 	'Microsoft.Getstarted';
 	'microsoft.windowscommunicationsapps';
@@ -188,12 +189,15 @@ $logfile = 'C:\Windows\Setup\Scripts\RemovePackages.log';
 		<File path="C:\Windows\Setup\Scripts\RemoveCapabilities.ps1">
 $selectors = @(
 	'Print.Fax.Scan';
+	'Language.Handwriting';
 	'Browser.InternetExplorer';
 	'MathRecognizer';
 	'OneCoreUAP.OneSync';
 	'OpenSSH.Client';
 	'Microsoft.Windows.MSPaint';
 	'App.Support.QuickAssist';
+	'Language.Speech';
+	'Language.TextToSpeech';
 	'App.StepsRecorder';
 	'Hello.Face.18967';
 	'Hello.Face.Migration.18967';
@@ -381,7 +385,15 @@ Set-ItemProperty -LiteralPath $key -Name 'ConfigureStartPins' -Value $json -Type
 	&lt;/DefaultLayoutOverride&gt;
 &lt;/LayoutModificationTemplate&gt;
 		</File>
-		<File path="C:\Windows\Setup\Scripts\GetWallpaper.ps1">
+		<File path="C:\Windows\Setup\Scripts\unattend-01.cmd">
+powercfg /change disk-timeout-ac 0
+powercfg /change hibernate-timeout-ac 0
+powercfg /change hibernate-timeout-dc 0
+powercfg /change monitor-timeout-ac 30
+powercfg /change standby-timeout-ac 0
+powercfg /hibernate off
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-02.ps1">
 $url = 'https://raw.githubusercontent.com/SysAdminDoc/Tools/refs/heads/main/Maven_Wallpaper.jpg'
 
 $destinationFolder = "$env:ProgramData\CompanyWallpaper"
@@ -416,82 +428,13 @@ Add-Type -TypeDefinition $code
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name Wallpaper -Value $wallpaperPath
 [Wallpaper]::Set($wallpaperPath)
 		</File>
-		<File path="C:\Windows\Setup\Scripts\SetWallpaper.ps1">
-Add-Type -TypeDefinition '
-	using System.Drawing;
-	using System.Runtime.InteropServices;
-	
-	public static class WallpaperSetter {
-		[DllImport("user32.dll")]
-		private static extern bool SetSysColors(
-			int cElements, 
-			int[] lpaElements,
-			int[] lpaRgbValues
-		);
-
-		[DllImport("user32.dll")]
-		private static extern bool SystemParametersInfo(
-			uint uiAction,
-			uint uiParam,
-			string pvParam,
-			uint fWinIni
-		);
-
-		public static void SetDesktopBackground(Color color) {
-			SystemParametersInfo(20, 0, "", 0);
-			SetSysColors(1, new int[] { 1 }, new int[] { ColorTranslator.ToWin32(color) });
-		}
-
-		public static void SetDesktopImage(string file) {
-			SystemParametersInfo(20, 0, file, 0);
-		}
-	}
-' -ReferencedAssemblies 'System.Drawing';
-
-function Set-WallpaperColor {
-	param(
-		[string]
-		$HtmlColor
-	);
-
-	$color = [System.Drawing.ColorTranslator]::FromHtml( $HtmlColor );
-	[WallpaperSetter]::SetDesktopBackground( $color );
-	Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 1 -Force;
-	Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value '' -Force;
-	Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Colors' -Name 'Background' -Type 'String' -Value "$($color.R) $($color.G) $($color.B)" -Force;
-}
-
-function Set-WallpaperImage {
-	param(
-		[string]
-		$LiteralPath
-	);
-
-	if( $LiteralPath | Test-Path ) {
-		[WallpaperSetter]::SetDesktopImage( $LiteralPath );
-		Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 0 -Force;
-		Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value $LiteralPath -Force;
-	} else {
-		"Cannot use '$LiteralPath' as a desktop wallpaper because that file does not exist.";
-	}
-}
-Set-WallpaperImage -LiteralPath 'C:\Windows\Setup\Scripts\Wallpaper';
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-01.cmd">
-powercfg /change disk-timeout-ac 0
-powercfg /change hibernate-timeout-ac 0
-powercfg /change hibernate-timeout-dc 0
-powercfg /change monitor-timeout-ac 30
-powercfg /change standby-timeout-ac 0
-powercfg /hibernate off
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-02.ps1">
+		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
 winget install --exact --id TeamViewer.TeamViewer --silent --accept-package-agreements --accept-source-agreements --scope machine
 		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
+		<File path="C:\Windows\Setup\Scripts\unattend-04.ps1">
 winget upgrade --all --silent --accept-package-agreements --accept-source-agreements --scope machine
 		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-04.reg">
+		<File path="C:\Windows\Setup\Scripts\unattend-05.reg">
 Windows Registry Editor Version 5.00
 
 ; Disable Telemetry and Data Collection
@@ -640,14 +583,6 @@ $scripts = @(
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetStartPins.ps1' -Raw | Invoke-Expression;
 	};
 	{
-		try {
-		  $bytes = Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\GetWallpaper.ps1' -Raw | Invoke-Expression;
-		  [System.IO.File]::WriteAllBytes( 'C:\Windows\Setup\Scripts\Wallpaper', $bytes );
-		} catch {
-		  $_;
-		}
-	};
-	{
 		C:\Windows\Setup\Scripts\unattend-01.cmd;
 	};
 );
@@ -686,16 +621,16 @@ $scripts = @(
 		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value 0;
 	};
 	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetWallpaper.ps1' -Raw | Invoke-Expression;
-	};
-	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-02.ps1' -Raw | Invoke-Expression;
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-03.ps1' -Raw | Invoke-Expression;
 	};
 	{
-		reg.exe import "C:\Windows\Setup\Scripts\unattend-04.reg";
+		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-04.ps1' -Raw | Invoke-Expression;
+	};
+	{
+		reg.exe import "C:\Windows\Setup\Scripts\unattend-05.reg";
 	};
 	{
 		Get-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' | Where-Object -FilterScript {
